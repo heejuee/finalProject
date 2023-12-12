@@ -1,7 +1,9 @@
 body {
   overflow: hidden;
   font-family: "Roboto", serif;
-  background: #000000;
+  background:url('albums_back.png') ;
+  
+  
   margin: 0;
             background-image: ;
             background-size: cover;
