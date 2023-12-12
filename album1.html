@@ -120,7 +120,19 @@
 
     }
 
-    #trackListButton,
+    #trackListButton{
+      margin-right: 1rem;
+      margin-left: 0.5rem;
+      cursor: pointer;
+      border-radius: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      /* background-image: url('musicplay_D.png');   */
+                                                
+      
+    }
     #focusModeButton {
       margin-right: 1rem;
       margin-left: 0.5rem;
@@ -130,17 +142,8 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-  
                                                 
       
-    }
-    #trackListButton:hover,
-    #trackListButton:active {
-      background-image: url('musicplay_E.png')}
-
-     #focusModeButton:hover,
-    #focusModeButton:active {
-      background-image: url('focusmode_E.png'); 
     }
 
 
@@ -206,7 +209,7 @@
       
 
     }
-    }
+    
 
     #audio {
       width: 62.5rem;
@@ -328,7 +331,7 @@
       height: 100vh;
       width: 100vw;
       margin: 0;
-      background:black; no-repeat;
+      background:black no-repeat;
       background-size: 100% auto;
     }
 
@@ -392,10 +395,10 @@
 
   <div id="navigation1">
     <button id="trackListButton" onclick="goTrackList()">
-     <img src="musicplay_D.png" style="width: 9rem; height:auto;">
+     <img src="musicplay_D.png" style="width: 9rem; height:auto;" id="trackListButtonImg">
     </button>
     <button id="focusModeButton" onclick="goFocus()" style="margin-left:0;">
-      <img src="focusmode_D.png" style="width: 9rem; height:auto;">
+      <img src="focusmode_D.png" style="width: 9rem; height:auto;" id="focusModeButtonImg">
        </button>
   </div>
  
@@ -581,10 +584,14 @@
       window.location.href = 'albums.html';
 
     }
-
+    const trackListButtonImg = document.getElementById("trackListButtonImg");
+    const focusModeButtonImg = document.getElementById("focusModeButtonImg");
+    trackListButtonImg.src = "musicplay_E.png"; 
     function goTrackList() {
       document.getElementById("trackList").style.display = "inline";
       document.getElementById("focusMod").style.display = "none";
+      trackListButtonImg.src = "musicplay_E.png";
+      focusModeButtonImg.src = "focusmode_D.png";
     }
     c
     
@@ -593,6 +600,8 @@
       // window.location.href = 'focus.html';
       document.getElementById("trackList").style.display = "none";
       document.getElementById("focusMod").style.display = "inline";
+      trackListButtonImg.src = "musicplay_D.png";
+      focusModeButtonImg.src = "focusmode_E.png";
       /*document.getElementById("canv").style.display = "none";*/
       focusChange();
     }
