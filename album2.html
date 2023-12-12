@@ -25,8 +25,8 @@
       align-items: left;
       justify-content: center;
       font-family: 'Cardo';
-      background-image: url('album_back2.png'); 
-      background-size: cover;
+      /*background-image: url('album_back2.png'); 
+      background-size: cover;*/
       font-family: 'Times New Roman', sans-serif;
                                                 
           
@@ -580,10 +580,14 @@
       window.location.href = 'albums.html';
 
     }
-
+    const trackListButtonImg = document.getElementById("trackListButtonImg");
+    const focusModeButtonImg = document.getElementById("focusModeButtonImg");
+    trackListButtonImg.src = "musicplay_E.png"; 
     function goTrackList() {
       document.getElementById("trackList").style.display = "inline";
       document.getElementById("focusMod").style.display = "none";
+      trackListButtonImg.src = "musicplay_E.png";
+      focusModeButtonImg.src = "focusmode_D.png";
 
 document.getElementById("canv").style.display = "inline";
 
