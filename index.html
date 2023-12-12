@@ -82,9 +82,10 @@
     window.location.href = 'albums.html';
   }
 
-  document.addEventListener('mousemove', () => {
-    overlay.style.opacity = '1'; /* 변경: 마우스 이동 시 투명도를 1로 변경 */
-    document.addEventListener('click', handleClickOutside);
+  document.body.addEventListener('click', () => {
+    // overlay.style.opacity = '1'; /* 변경: 마우스 이동 시 투명도를 1로 변경 */
+    // document.addEventListener('click', handleClickOutside);
+    window.location.href = 'albums.html';
   });
 
   function handleClickOutside(event) {
