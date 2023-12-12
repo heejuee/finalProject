@@ -67,12 +67,12 @@
 </head>
 <body>
 
-<div id="overlay">
+<!-- <div id="overlay">
   <div id="enterButton" onclick="enterSite()">
     Click me to enter!
     <div id="bellImage" style="background: url('bell.png') no-repeat; background-size: cover;"></div>
   </div>
-</div>
+</div> -->
 
 <script>
   const overlay = document.getElementById('overlay');
@@ -82,9 +82,7 @@
     window.location.href = 'albums.html';
   }
 
-  document.body.addEventListener('click', () => {
-    // overlay.style.opacity = '1'; /* 변경: 마우스 이동 시 투명도를 1로 변경 */
-    // document.addEventListener('click', handleClickOutside);
+  document.addEventListener('click', () => {
     window.location.href = 'albums.html';
   });
 
