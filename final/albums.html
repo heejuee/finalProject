@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Album Carousel</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Roboto'>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+  <div class="carousel" id="carousel">
+    <div class="carousel-item" onclick="navigateToPage('album1.html')">
+      <div class="carousel-box">
+        <img src="album1.png">
+      </div>
+    </div>
+
+    <!-- Add other carousel items similarly -->
+    <div class="carousel-item" onclick="navigateToPage('album2.html')">
+      <div class="carousel-box">
+        <img src="album2.png">
+      </div>
+    </div>
+
+    <div class="carousel-item" onclick="navigateToPage('album3.html')">
+      <div class="carousel-box"></style>
+</head>
+
+<body>
+
+
+
+  <script>
+    function togglePlayPause() {
+      var audio = document.getElementById('audioPlayer');
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    }
+
+    function goBack() {
+      // Change the current window location to the carousel page
+      window.location.href = 'index.html';
+    }
+  </script>
+
+</body>
+
+</html>
+        <img src="album3.png">
+      </div>
+    </div>
+
+    <div class="carousel-item" onclick="navigateToPage('album4.html')">
+      <div class="carousel-box">
+        <img src="album4.png">
+      </div>
+    </div>
+
+    <div class="carousel-item" onclick="navigateToPage('album5.html')">
+      <div class="carousel-box">
+        <img src="album5.png">
+      </div>
+    </div>
+
+    <div class="carousel-item" onclick="navigateToPage('album6.html')">
+      <div class="carousel-box">
+        <img src="album6.png">
+      </div>
+    </div>
+
+    <div class="carousel-item" onclick="navigateToPage('album7.html')">
+      <div class="carousel-box">
+        <img src="album7.png">
+      </div>
+    </div>
+  </div>
+
+  <div class="cursor"></div>
+  <div class="cursor cursor2"></div>
+
+  <!-- Include the script separately -->
+  <script src="./script.js"></script>
+
+  <!-- Separate script for the function definition -->
+  <script>
+    function navigateToPage(url) {
+      // Change the current window location to the specified URL
+      window.location.href = url;
+    }
+  </script>
+
+</body>
+
+</html>

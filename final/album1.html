@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Album 1</title>
+  <link rel="stylesheet" href="./style.css">
+  <canvas id='canv'></canvas>
+  
+ <style>
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Cardo&family=Hedvig+Letters+Serif:opsz@12..24&family=PT+Serif:ital@1&family=Unna&display=swap');
+
+  @import url('https://fonts.cdnfonts.com/css/times-new-roman');
+  @import url('https://fonts.cdnfonts.com/css/gloock-2');
+       
+                
+    html,
+    body {
+      height: 100%;
+      /* 변경: 전체 화면 높이를 100%로 설정 */
+      margin: 0;
+      display: flex;
+      align-items: left;
+      justify-content: center;
+      font-family: 'Cardo';
+      /*background-image: url('album_back1.png'); 
+      background-size: cover;*/
+      font-family: 'Times New Roman', sans-serif;
+                                                
+          
+    }
+
+
+    #canv{background-color: transparent;
+          /*background-image: url('album_back1.png'); 
+          background-size: cover;
+          */
+      pointer-events: none;
+      z-index: 9999;
+      position: absolute;
+        }
+  
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 40%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .overlay-content {
+      color: white;
+      padding: 1.25rem;
+      text-align: center;
+      margin: 0rem;
+      justify-content: center;
+
+      align-items: center;
+
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: center;
+
+
+    }
+
+    .img-container {
+    
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+    }
+
+    #navigation1 {
+      display: flex;
+      flex-direction: row;
+      position: absolute;
+      left: 0rem;
+      bottom: 0rem;
+      width: auto;
+      height: auto;
+
+    }
+
+    #goBackButton {
+      display: inline;
+      height: auto;
+      position: absolute;
+      left: 0rem;
+      top: 0rem;
+      margin-top: 0.625rem;
+      margin-bottom: 62.5rem;
+      padding: 0.625rem;
+      background-color: transparent;
+      color: white;
+      border: none;
+      cursor: pointer;
+      text-decoration: underline;
+      /* display: inline; */
+      height: 0.6rem;
+      width: auto;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;                          
+      font-family: 'Gloock', sans-serif;
+                                                
+
+    }
+
+    #trackListButton,
+    #focusModeButton {
+      margin-right: 1rem;
+      margin-left: 0.5rem;
+      cursor: pointer;
+      border-radius: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  
+                                                
+      
+    }
+    #trackListButton:hover,
+    #trackListButton:active {
+      background-image: url('musicplay_E.png')}
+
+     #focusModeButton:hover,
+    #focusModeButton:active {
+      background-image: url('focusmode_E.png'); 
+    }
+
+
+    #title {
+      font-size: 2rem;
+      color: white;
+      margin-bottom: 0rem;
+      margin-top: 1rem;
+
+
+    }
+
+    #singer {
+      font-size: 1.5rem;
+      color: dimgrey;
+      margin: 0px;
+      margin-top: 0.2rem;
+
+
+    }
+
+    /* 
+    button {
+      margin-top: 10px;
+      margin-bottom: 100px;
+      padding: 10px;
+      background-color: transparent;
+      color: white;
+      border: none;
+      cursor: pointer;
+      text-decoration: underline;
+      display: inline;
+      height: 50px;;
+      width: auto;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    } */
+    .white-circle {
+      width: 0.5rem;
+      height: 0.5rem;
+      background-color: #ffffff;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 0.5rem;
+    }
+
+    #goBackButton { margin-top: 2rem;
+
+     
+
+    }
+
+    #trackListButton,
+    #focusModeButton {
+      margin-bottom: 2rem;
+      background:transparent;
+      border: none;
+      margin-right: 0;
+
+      
+
+    }
+    }
+
+    #audio {
+      width: 62.5rem;
+      height: 62.5rem;
+    }
+
+    #prev {
+      background: url('prev.png') no-repeat;
+      width: 1.8rem;
+      height: 1.8rem;
+      background-size: cover;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 1rem;
+      margin-top: 1.8rem;
+    }
+
+    #play {
+      background: url('play.png')no-repeat;
+      width: 3.5rem;
+      height: 3.5rem;
+      background-size: cover;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 1rem;
+
+    }
+
+    #focusPlay {
+      background: url('play.png')no-repeat;
+      width: 3.5rem;
+      height: 3.5rem;
+      background-size: cover;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 1rem;
+     
+    }
+
+    #next {
+      background: url('next.png') no-repeat;
+      width: 1.8rem;
+      height: 1.8rem;
+      background-size: cover;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 1rem;
+      margin-top: 1.8rem;
+     
+    }
+
+    #cover {
+      height: 20rem;
+      width: 20rem;
+      justify-content: center;
+      align-items: center;}
+
+    #value1{margin-bottom: 1rem;}
+
+
+
+
+    input[type="range"] {
+      overflow: hidden;
+      height: 8px;
+      -webkit-appearance: none;
+      padding: 0rem;
+      left: 0px;
+      top: 50%;
+      width: 30rem;
+      background: transparent;
+      transform: rotate(0deg);
+      transform-origin: 10% 10%;
+       border-radius: 100px;
+      /* transform: rotate(-90deg); */
+    }
+
+    input[type="range"]:focus {
+      outline: none;
+    }
+
+    input[type="range"]::-webkit-slider-runnable-track {
+      width: 50%;
+      height: 100%;
+      cursor: pointer;
+      border-radius: 100px;
+      border: 2px solid #ffffff;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 100px;
+      background: #ffffff;
+      box-shadow: 1px 1px 7px grey;
+      cursor: pointer;
+      box-shadow: -100vw 0 0 100vw #ffffff;
+    }
+
+    #focusMod {
+      display: none;
+      height: 100vh;
+      width: 100vw;
+      margin: 0;
+      background:black; no-repeat;
+      background-size: 100% auto;
+    }
+
+    #trackList {
+/*      z-index: 99;*/
+      display: inline;
+      height: 100vh;
+      width: 100vw;
+      background-image: url('album_back1.png');
+      background-size: cover;
+      background-position: left top;
+
+    }
+
+    #focusContainer {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: left;
+    }
+
+  #focusSong {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #focusTitle {
+      display: inline;
+      font-size: 2rem;
+      color: #ffffff;
+    }
+
+    #focusSinger {
+      display: inline;
+      font-size: 1.3rem;
+      color: grey;
+    }
+
+    #timer {
+      
+      position: absolute;
+      top: 30%;
+      display: inline;
+      font-size: 20rem;
+      color: #ffffff;
+       font-family: 'Times New Roman', sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+
+  <button id="goBackButton" onclick="goBack()"><img src="gobacktolist.png" style="width: 12rem; height:auto;"></button>
+ 
+
+
+
+  <div id="navigation1">
+    <button id="trackListButton" onclick="goTrackList()">
+     <img src="musicplay_D.png" style="width: 9rem; height:auto;">
+    </button>
+    <button id="focusModeButton" onclick="goFocus()" style="margin-left:0;">
+      <img src="focusmode_D.png" style="width: 9rem; height:auto;">
+       </button>
+  </div>
+ 
+  
+
+  <div id="trackList">
+    <div class="overlay">
+
+
+      <div class="overlay-content" style="padding: 0;">
+            <div class="img-container" style="justify-content: center;">
+               
+
+   
+          <img src="album2.png" alt="cover" id="cover">
+        </div>
+        <audio id="audioPlayer" src="Boom Bap Flick - Quincas Moreira.mp3" onloadstart="this.volume=0.05"></audio>
+   
+
+        <div class="music-info">
+          <h4 id="title">I fall in love too easily</h4>
+          <p id="singer">Chat Baker</p>
+          <div class="progress-container" id="progress-container">
+            <div class="progress" id="progress"></div>
+          </div>
+        </div>
+
+        <div class="navigation">
+          <button id="prev" class="action-btn" onclick="onPrevClickHandler()"><i
+              class="fa-sharp fa-solid fa-backward"></i></button>
+          <button id="focusPlay" class="actiong-btn big" onclick="onPlayerClickHandler()"><i
+              class="fa-solid fa-play"></i></button>
+          <button id="next" class="actiong-btn" onclick="onNextClickHandler()"><i
+              class="fa-sharp fa-solid fa-forward"></i></button>
+        </div>
+
+
+
+      </div>
+      <div>
+        <p style="color: white; font-size: 1.2rem; text-align: center; font-style: times; line-height: 140%; margin-top: 0; padding: 2rem;">Chet Baker
+
+          was an iconic jazz trumpeter and vocalist known for <br> is lyrical playing and distinctively smooth singing
+          style. Rising to<br> prominence in the 1950s, Baker's trumpet solos showcased a delicate yet <br>emotive
+          approach, while his vocals added a unique charm to his musical repertoire. <br>His enduring influence on the
+          jazz genre solidifies his status <br> as a legendary figure in the history of jazz.</p>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: center; left: 0; margin-bottom:1rem; margin-top: 3rem;">
+                    <img src="volume.png" style="width: 2rem; height: 2rem; margin-right: 1rem;">
+                    <input type="range" id="range1" max="100" min="0" value="0" style="margin-right: 0;">
+                         <div class="value1" style="margin-left: 1rem; font-size: 1.5rem; color: white;">0</div>
+                 
+                </div></div>
+  </div>
+
+  </div>
+  <div id="focusMod">
+    <div id="focusContainer">
+      <div id="focusSong">
+        <div id="focusTitle"></div>
+        <div id="focusSinger"></div>
+        <button id="play" class="actiong-btn big" onclick="onPlayerClickHandler()"><i
+            class="fa-solid fa-play"></i></button>
+      </div>
+      <div id="timer">
+        60:00
+      </div>
+    </div>
+    <!-- <div id=" focusTitle"></div> -->
+  </div>
+  <script>
+    var titles = ["I fall in love too easily", "Lazy Walk", "Cocktail Hour", "Quiet", "Ipanema Daydream"];
+    var singer = ["Chat Baker", "Cheel", "Aaron Kenny", "The Mini Vandals", "Bird Creek"];
+    var cover = ["album2","album5", "album1_2", "album1_3", "album1_5"];
+    var audioSrc = ["Boom Bap Flick - Quincas Moreira", "Lazy Walk - Cheel", "Cocktail Hour - Aaron Kenny", "Quiet - The Mini Vandals", "Ipanema Daydream - Bird Creek"];
+    var i = 0, j = 0;
+
+    function onNextClickHandler() {
+      i++;
+      titleChangeHandler();
+    };
+    function onPrevClickHandler() {
+      i--;
+
+      titleChangeHandler();
+    };
+    function titleChangeHandler() {
+      if (i <= 0) {
+        i = titles.length;
+      }
+      // 만약 i가 6 이상이면 i를 다시 0으로 설정
+      else if (i >= titles.length) {
+        i = 0;
+      }
+
+      // j는 i를 6으로 나눈 나머지로 설정
+      j = i % titles.length;
+
+      document.getElementById("title").textContent = titles[j];
+      document.getElementById("singer").textContent = singer[j];
+      document.getElementById("cover").src = cover[j] + ".png";
+      document.getElementById("audioPlayer").src = audioSrc[j] + ".mp3";
+    }
+    var playerUrlForm = false;
+    var playerUrl
+    var endCheck;
+    function onPlayerClickHandler() {
+      playerUrlForm = !playerUrlForm;
+      var audio = document.getElementById('audioPlayer');
+      if (playerUrlForm == false) {
+        playerUrl = "stop.png";
+        audio.play();
+        endCheck = setInterval(endHandler, 1000);
+      }
+      else {
+        playerUrl = "play.png";
+        audio.pause();
+        clearInterval(endCheck);
+      }
+
+      document.getElementById("play").style.background = `url(${playerUrl})no-repeat`;
+      document.getElementById("play").style.backgroundSize = `cover`;
+      document.getElementById("focusPlay").style.background = `url(${playerUrl})no-repeat`;
+      document.getElementById("focusPlay").style.backgroundSize = `cover`;
+    };
+    const endHandler = () => {
+      if (audio.ended == true) {
+        onNextClickHandler();
+        onPlayerClickHandler();
+        onPlayerClickHandler();
+        focusChange();
+      }
+    }
+    const audioValue = document.querySelector("#audioPlayer");
+    const sliderEl = document.querySelector("#range1")
+    const sliderValue = document.querySelector(".value1")
+
+    sliderEl.addEventListener("input", (event) => {
+      const tempSliderValue = event.target.value;
+      sliderValue.textContent = "" + tempSliderValue;
+
+      const progress = (tempSliderValue / sliderEl.max) * 100;
+      // console.log(progress);
+      audioValue.volume = progress * 0.001;
+      // sliderEl.style.background = `linear-gradient(to right, #f50 ${progress}%, #ccc ${progress}%)`;
+    })
+    var audio = document.getElementById('audioPlayer');
+
+    function focusChange() {
+      document.getElementById("focusTitle").textContent = titles[j];
+      document.getElementById("focusSinger").textContent = singer[j];
+    }
+    var time = 3600;
+    var min = "";
+    var sec = "";
+    var timerToggle = false;
+    var playTimer;
+
+    document.getElementById("timer").addEventListener('click', () => {
+      timerToggle = !timerToggle;
+      if (timerToggle) {
+        playTimer = setInterval(playHandler, 1000);
+
+        console.log(timerToggle);
+      } else {
+        clearInterval(playTimer);
+      }
+    });
+
+    const playHandler = () => {
+      min = parseInt(time / 60);
+      sec = time % 60;
+      if (sec.toString().length == 1) sec = "0" + sec;
+      document.getElementById("timer").innerHTML = min + ":" + sec;
+      time--;
+      if (time < 0) {
+        clearInterval(playTimer);
+        document.getElementById("timer").innerHTML = "시간종료";
+      }
+    };
+
+    function goBack() {
+      window.location.href = 'albums.html';
+
+    }
+
+    function goTrackList() {
+      document.getElementById("trackList").style.display = "inline";
+      document.getElementById("focusMod").style.display = "none";
+    }
+    c
+    
+
+    function goFocus() {
+      // window.location.href = 'focus.html';
+      document.getElementById("trackList").style.display = "none";
+      document.getElementById("focusMod").style.display = "inline";
+      /*document.getElementById("canv").style.display = "none";*/
+      focusChange();
+    }
+
+
+
+
+    var c = document.getElementById('canv'), 
+    $ = c.getContext("2d");
+var w = c.width = window.innerWidth, 
+    h = c.height = window.innerHeight;
+
+Snowy();
+function Snowy() {
+  var snow, arr = [];
+  var num = 600, tsc = 1, sp = 1;
+  var sc = 1.3, t = 0, mv = 20, min = 1;
+    for (var i = 0; i < num; ++i) {
+      snow = new Flake();
+      snow.y = Math.random() * (h + 50);
+      snow.x = Math.random() * w;
+      snow.t = Math.random() * (Math.PI * 2);
+      snow.sz = (100 / (10 + (Math.random() * 100))) * sc;
+      snow.sp = (Math.pow(snow.sz * .8, 2) * .15) * sp;
+      snow.sp = snow.sp < min ? min : snow.sp;
+      arr.push(snow);
+    }
+  go();
+  function go(){
+    window.requestAnimationFrame(go);
+      $.clearRect(0, 0, w, h);
+      /*$.fillStyle = 'hsla(242, 95%, 50%, 0.0)';*/
+      $.fillRect(0, 0, w, h);
+      $.fill();
+        for (var i = 0; i < arr.length; ++i) {
+          f = arr[i];
+          f.t += .05;
+          f.t = f.t >= Math.PI * 2 ? 0 : f.t;
+          f.y += f.sp;
+          f.x += Math.sin(f.t * tsc) * (f.sz * .3);
+          if (f.y > h + 50) f.y = -10 - Math.random() * mv;
+          if (f.x > w + mv) f.x = - mv;
+          if (f.x < - mv) f.x = w + mv;
+          f.draw();}
+ }
+
+ function Flake() {
+   this.draw = function() {
+      this.g = $.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.sz);
+      this.g.addColorStop(0, 'hsla(255,255%,255%,1)');
+      this.g.addColorStop(1, 'hsla(255,255%,255%,0)');
+      $.moveTo(this.x, this.y);
+      $.fillStyle = this.g;
+      $.beginPath();
+      $.arc(this.x, this.y, this.sz, 0, Math.PI * 2, true);
+      $.fill();}
+  }
+}
+/*________________________________________*/
+window.addEventListener('resize', function(){
+  c.width = w = window.innerWidth;
+  c.height = h = window.innerHeight;
+}, false);
+
+  </script>
+
+</body>
+
+</html>
