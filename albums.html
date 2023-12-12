@@ -7,8 +7,20 @@
   <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Roboto'>
   <link rel="stylesheet" href="./style.css">
 </head>
+<style>
+  #goStart{
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background:transparent;
+      border: none;
+      margin-top: 1rem;}
+</style>
 
 <body>
+  <button id="goStart" onclick="goStart()"><img src="gobacktostart.png" style="width: 10rem; height:auto; justify-content: center; "></button>
 
   <div class="carousel" id="carousel">
     <div class="carousel-item" onclick="navigateToPage('album1.html')">
@@ -91,6 +103,11 @@
     function navigateToPage(url) {
       // Change the current window location to the specified URL
       window.location.href = url;
+    }
+
+    function goStart() {
+      window.location.href = 'index.html';
+
     }
   </script>
 
