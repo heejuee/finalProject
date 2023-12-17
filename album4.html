@@ -462,15 +462,17 @@
     var cover = ["album4_1","album4_2", "album4_3", "album4_4", "album4_5"];
     var audioSrc = ["Silent Night (Jazz) - E's Jammy Jams", "We Wish You a Merry Christmas (Jazz) - E's Jammy Jams", "Cocktail Hour - Aaron Kenny", "Quiet - The Mini Vandals", "Up on the Housetop (Instrumental) - E's Jammy Jams"];
     var i = 0, j = 0;
-
+    var playerUrlForm = true;
     function onNextClickHandler() {
       i++;
       titleChangeHandler();
+      onPlayCheck();
     };
     function onPrevClickHandler() {
       i--;
 
       titleChangeHandler();
+      onPlayCheck();
     };
     function titleChangeHandler() {
       if (i <= 0) {
@@ -489,28 +491,33 @@
       document.getElementById("cover").src = cover[j] + ".png";
       document.getElementById("audioPlayer").src = audioSrc[j] + ".mp3";
     }
-    var playerUrlForm = false;
-    var playerUrl
-    var endCheck;
-    function onPlayerClickHandler() {
-      playerUrlForm = !playerUrlForm;
-      var audio = document.getElementById('audioPlayer');
+    var audio = document.getElementById('audioPlayer');
+    function onPlayCheck() {
       if (playerUrlForm == false) {
+        console.log("playing");
         playerUrl = "stop.png";
         audio.play();
         endCheck = setInterval(endHandler, 1000);
       }
       else {
+        console.log("stoped");
         playerUrl = "play.png";
         audio.pause();
         clearInterval(endCheck);
       }
+    }
+    var playerUrl
+    var endCheck;
+    function onPlayerClickHandler() {
+      playerUrlForm = !playerUrlForm;
+      onPlayCheck();
 
       document.getElementById("play").style.background = `url(${playerUrl})no-repeat`;
       document.getElementById("play").style.backgroundSize = `cover`;
       document.getElementById("focusPlay").style.background = `url(${playerUrl})no-repeat`;
       document.getElementById("focusPlay").style.backgroundSize = `cover`;
     };
+    
     const endHandler = () => {
       if (audio.ended == true) {
         onNextClickHandler();

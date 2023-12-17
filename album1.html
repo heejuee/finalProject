@@ -486,21 +486,21 @@
     var playerUrlForm = true;
     function onNextClickHandler() {
       i++;
-      document.getElementById("play").style.background = `url("play.png"})no-repeat`;
-      document.getElementById("play").style.backgroundSize = `cover`;
-      document.getElementById("focusPlay").style.background = `url("play.png")no-repeat`;
-      document.getElementById("focusPlay").style.backgroundSize = `cover`;
-      playerUrlForm = true;
+      // document.getElementById("play").style.background = `url("play.png"})no-repeat`;
+      // document.getElementById("play").style.backgroundSize = `cover`;
+      // document.getElementById("focusPlay").style.background = `url("play.png")no-repeat`;
+      // document.getElementById("focusPlay").style.backgroundSize = `cover`;
+      // playerUrlForm = true;
       titleChangeHandler();
       onPlayCheck();
     };
     function onPrevClickHandler() {
       i--;
-      document.getElementById("play").style.background = `url("play.png"})no-repeat`;
-      document.getElementById("play").style.backgroundSize = `cover`;
-      document.getElementById("focusPlay").style.background = `url("play.png")no-repeat`;
-      document.getElementById("focusPlay").style.backgroundSize = `cover`;
-      playerUrlForm = true;
+      // document.getElementById("play").style.background = `url("play.png"})no-repeat`;
+      // document.getElementById("play").style.backgroundSize = `cover`;
+      // document.getElementById("focusPlay").style.background = `url("play.png")no-repeat`;
+      // document.getElementById("focusPlay").style.backgroundSize = `cover`;
+      // playerUrlForm = true;
       titleChangeHandler();
       onPlayCheck();
     };
@@ -650,7 +650,7 @@
         snow.sz = (100 / (10 + (Math.random() * 100))) * sc;
         snow.sp = (Math.pow(snow.sz * .8, 2) * .15) * sp;
         snow.sp = snow.sp < min ? min : snow.sp;
-        arr.push(눈);
+        arr.push(snow);
       }
       go();
       function go() {
