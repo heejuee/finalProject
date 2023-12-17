@@ -6,16 +6,14 @@
   <title>Album 1</title>
   <link rel="stylesheet" href="./style.css">
   <canvas id='canv'></canvas>
-  
- <style>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cardo&family=Hedvig+Letters+Serif:opsz@12..24&family=PT+Serif:ital@1&family=Unna&display=swap');
+
+    @import url('https://fonts.cdnfonts.com/css/times-new-roman');
+    @import url('https://fonts.cdnfonts.com/css/gloock-2');
 
 
-  @import url('https://fonts.googleapis.com/css2?family=Cardo&family=Hedvig+Letters+Serif:opsz@12..24&family=PT+Serif:ital@1&family=Unna&display=swap');
-
-  @import url('https://fonts.cdnfonts.com/css/times-new-roman');
-  @import url('https://fonts.cdnfonts.com/css/gloock-2');
-       
-                
     html,
     body {
       height: 100%;
@@ -28,20 +26,21 @@
       /*background-image: url('album_back1.png'); 
       background-size: cover;*/
       font-family: 'Times New Roman', sans-serif;
-                                                
-          
+
+
     }
 
 
-    #canv{background-color: transparent;
-          /*background-image: url('album_back1.png'); 
+    #canv {
+      background-color: transparent;
+      /*background-image: url('album_back1.png'); 
           background-size: cover;
           */
       pointer-events: none;
       z-index: 9999;
       position: absolute;
-        }
-  
+    }
+
 
     .overlay {
       position: fixed;
@@ -75,7 +74,7 @@
     }
 
     .img-container {
-    
+
       justify-content: center;
       align-items: center;
       margin: 0 auto;
@@ -114,13 +113,13 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-size: 1.5rem;                          
+      font-size: 1.5rem;
       font-family: 'Gloock', sans-serif;
-                                                
+
 
     }
 
-    #trackListButton{
+    #trackListButton {
       margin-right: 1rem;
       margin-left: 0.5rem;
       cursor: pointer;
@@ -130,9 +129,10 @@
       justify-content: center;
       align-items: center;
       /* background-image: url('musicplay_D.png');   */
-                                                
-      
+
+
     }
+
     #focusModeButton {
       margin-right: 1rem;
       margin-left: 0.5rem;
@@ -142,8 +142,8 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-                                                
-      
+
+
     }
 
 
@@ -193,23 +193,24 @@
       margin-right: 0.5rem;
     }
 
-    #goBackButton { margin-top: 2rem;
+    #goBackButton {
+      margin-top: 2rem;
 
-     
+
 
     }
 
     #trackListButton,
     #focusModeButton {
       margin-bottom: 2rem;
-      background:transparent;
+      background: transparent;
       border: none;
       margin-right: 0;
 
-      
+
 
     }
-    
+
 
     #audio {
       width: 62.5rem;
@@ -258,7 +259,7 @@
       justify-content: center;
       align-items: center;
       margin: 1rem;
-     
+
     }
 
     #next {
@@ -274,16 +275,19 @@
       align-items: center;
       margin: 1rem;
       margin-top: 1.8rem;
-     
+
     }
 
     #cover {
       height: 20rem;
       width: 20rem;
       justify-content: center;
-      align-items: center;}
+      align-items: center;
+    }
 
-    #value1{margin-bottom: 1rem;}
+    #value1 {
+      margin-bottom: 1rem;
+    }
 
 
 
@@ -299,7 +303,7 @@
       background: transparent;
       transform: rotate(0deg);
       transform-origin: 10% 10%;
-       border-radius: 100px;
+      border-radius: 100px;
       /* transform: rotate(-90deg); */
     }
 
@@ -331,12 +335,12 @@
       height: 100vh;
       width: 100vw;
       margin: 0;
-      background:url('focusmode_back.png') no-repeat;
+      background: url('focusmode_back.png') no-repeat;
       background-size: 100% auto;
     }
 
     #trackList {
-/*      z-index: 99;*/
+      /*      z-index: 99;*/
       display: inline;
       height: 100vh;
       width: 100vw;
@@ -354,7 +358,7 @@
       justify-content: left;
     }
 
-  #focusSong {
+    #focusSong {
       margin-top: 2rem;
       display: flex;
       flex-direction: column;
@@ -375,13 +379,13 @@
     }
 
     #timer {
-      
+
       position: absolute;
       top: 30%;
       display: inline;
       font-size: 20rem;
       color: #ffffff;
-       font-family: 'Times New Roman', sans-serif;
+      font-family: 'Times New Roman', sans-serif;
     }
   </style>
 </head>
@@ -389,34 +393,34 @@
 <body>
 
   <button id="goBackButton" onclick="goBack()"><img src="gobacktolist.png" style="width: 12rem; height:auto;"></button>
- 
+
 
 
 
   <div id="navigation1">
     <button id="trackListButton" onclick="goTrackList()">
-     <img src="musicplay_D.png" style="width: 9rem; height:auto;" id="trackListButtonImg">
+      <img src="musicplay_D.png" style="width: 9rem; height:auto;" id="trackListButtonImg">
     </button>
     <button id="focusModeButton" onclick="goFocus()" style="margin-left:0;">
       <img src="focusmode_D.png" style="width: 9rem; height:auto;" id="focusModeButtonImg">
-       </button>
+    </button>
   </div>
- 
-  
+
+
 
   <div id="trackList">
     <div class="overlay">
 
 
       <div class="overlay-content" style="padding: 0;">
-            <div class="img-container" style="justify-content: center;">
-               
+        <div class="img-container" style="justify-content: center;">
 
-   
+
+
           <img src="album2.png" alt="cover" id="cover">
         </div>
         <audio id="audioPlayer" src="Boom Bap Flick - Quincas Moreira.mp3" onloadstart="this.volume=0.05"></audio>
-   
+
 
         <div class="music-info">
           <h4 id="title">I fall in love too easily</h4>
@@ -439,19 +443,23 @@
 
       </div>
       <div>
-        <p style="color: white; font-size: 1.2rem; text-align: center; font-style: times; line-height: 140%; margin-top: 0; padding: 2rem;">Chet Baker
+        <p
+          style="color: white; font-size: 1.2rem; text-align: center; font-style: times; line-height: 140%; margin-top: 0; padding: 2rem;">
+          Chet Baker
 
-          was an iconic jazz trumpeter and vocalist<br>v known for  is lyrical playing and distinctively smooth singing
+          was an iconic jazz trumpeter and vocalist<br>v known for is lyrical playing and distinctively smooth singing
           style.<br>Baker's trumpet solos showcased a delicate yet emotive<br>
           approach, while his vocals added a unique charm to his musical repertoire. <br>His enduring influence on the
           jazz genre solidifies his status <br> as a legendary figure in the history of jazz.</p>
       </div>
-      <div style="display: flex; align-items: center; justify-content: center; left: 0; margin-bottom:1rem; margin-top: 3rem;">
-                    <img src="volume.png" style="width: 2rem; height: 2rem; margin-right: 1rem;">
-                    <input type="range" id="range1" max="100" min="0" value="0" style="margin-right: 0;">
-                         <div class="value1" style="margin-left: 1rem; font-size: 1.5rem; color: white;">0</div>
-                 
-                </div></div>
+      <div
+        style="display: flex; align-items: center; justify-content: center; left: 0; margin-bottom:1rem; margin-top: 3rem;">
+        <img src="volume.png" style="width: 2rem; height: 2rem; margin-right: 1rem;">
+        <input type="range" id="range1" max="100" min="0" value="0" style="margin-right: 0;">
+        <div class="value1" style="margin-left: 1rem; font-size: 1.5rem; color: white;">0</div>
+
+      </div>
+    </div>
   </div>
 
   </div>
@@ -472,18 +480,29 @@
   <script>
     var titles = ["I fall in love too easily", "Lazy Walk", "Cocktail Hour", "Quiet", "Ipanema Daydream"];
     var singer = ["Chat Baker", "Cheel", "Aaron Kenny", "The Mini Vandals", "Bird Creek"];
-    var cover = ["album2","album5", "album1_2", "album1_3", "album1_5"];
+    var cover = ["album2", "album5", "album1_2", "album1_3", "album1_5"];
     var audioSrc = ["Boom Bap Flick - Quincas Moreira", "Lazy Walk - Cheel", "Cocktail Hour - Aaron Kenny", "Quiet - The Mini Vandals", "Ipanema Daydream - Bird Creek"];
     var i = 0, j = 0;
-
+    var playerUrlForm = true;
     function onNextClickHandler() {
       i++;
+      document.getElementById("play").style.background = `url("play.png"})no-repeat`;
+      document.getElementById("play").style.backgroundSize = `cover`;
+      document.getElementById("focusPlay").style.background = `url("play.png")no-repeat`;
+      document.getElementById("focusPlay").style.backgroundSize = `cover`;
+      playerUrlForm = true;
       titleChangeHandler();
+      onPlayCheck();
     };
     function onPrevClickHandler() {
       i--;
-
+      document.getElementById("play").style.background = `url("play.png"})no-repeat`;
+      document.getElementById("play").style.backgroundSize = `cover`;
+      document.getElementById("focusPlay").style.background = `url("play.png")no-repeat`;
+      document.getElementById("focusPlay").style.backgroundSize = `cover`;
+      playerUrlForm = true;
       titleChangeHandler();
+      onPlayCheck();
     };
     function titleChangeHandler() {
       if (i <= 0) {
@@ -502,22 +521,26 @@
       document.getElementById("cover").src = cover[j] + ".png";
       document.getElementById("audioPlayer").src = audioSrc[j] + ".mp3";
     }
-    var playerUrlForm = false;
-    var playerUrl
-    var endCheck;
-    function onPlayerClickHandler() {
-      playerUrlForm = !playerUrlForm;
-      var audio = document.getElementById('audioPlayer');
+    var audio = document.getElementById('audioPlayer');
+    function onPlayCheck() {
       if (playerUrlForm == false) {
+        console.log("playing");
         playerUrl = "stop.png";
         audio.play();
         endCheck = setInterval(endHandler, 1000);
       }
       else {
+        console.log("stoped");
         playerUrl = "play.png";
         audio.pause();
         clearInterval(endCheck);
       }
+    }
+    var playerUrl
+    var endCheck;
+    function onPlayerClickHandler() {
+      playerUrlForm = !playerUrlForm;
+      onPlayCheck();
 
       document.getElementById("play").style.background = `url(${playerUrl})no-repeat`;
       document.getElementById("play").style.backgroundSize = `cover`;
@@ -586,7 +609,7 @@
     }
     const trackListButtonImg = document.getElementById("trackListButtonImg");
     const focusModeButtonImg = document.getElementById("focusModeButtonImg");
-    trackListButtonImg.src = "musicplay_E.png"; 
+    trackListButtonImg.src = "musicplay_E.png";
     function goTrackList() {
       document.getElementById("trackList").style.display = "inline";
       document.getElementById("focusMod").style.display = "none";
@@ -594,7 +617,7 @@
       focusModeButtonImg.src = "focusmode_D.png";
     }
     c
-    
+
 
     function goFocus() {
       // window.location.href = 'focus.html';
@@ -609,33 +632,33 @@
 
 
 
-    var c = document.getElementById('canv'), 
-    $ = c.getContext("2d");
-var w = c.width = window.innerWidth, 
-    h = c.height = window.innerHeight;
+    var c = document.getElementById('canv'),
+      $ = c.getContext("2d");
+    var w = c.width = window.innerWidth,
+      h = c.height = window.innerHeight;
 
-Snowy();
-function Snowy() {
-  var snow, arr = [];
-  var num = 600, tsc = 1, sp = 1;
-  var sc = 1.3, t = 0, mv = 20, min = 1;
-    for (var i = 0; i < num; ++i) {
-      snow = new Flake();
-      snow.y = Math.random() * (h + 50);
-      snow.x = Math.random() * w;
-      snow.t = Math.random() * (Math.PI * 2);
-      snow.sz = (100 / (10 + (Math.random() * 100))) * sc;
-      snow.sp = (Math.pow(snow.sz * .8, 2) * .15) * sp;
-      snow.sp = snow.sp < min ? min : snow.sp;
-      arr.push(snow);
-    }
-  go();
-  function go(){
-    window.requestAnimationFrame(go);
-      $.clearRect(0, 0, w, h);
-      /*$.fillStyle = 'hsla(242, 95%, 50%, 0.0)';*/
-      $.fillRect(0, 0, w, h);
-      $.fill();
+    Snowy();
+    function Snowy() {
+      var snow, arr = [];
+      var num = 600, tsc = 1, sp = 1;
+      var sc = 1.3, t = 0, mv = 20, min = 1;
+      for (var i = 0; i < num; ++i) {
+        snow = new Flake();
+        snow.y = Math.random() * (h + 50);
+        snow.x = Math.random() * w;
+        snow.t = Math.random() * (Math.PI * 2);
+        snow.sz = (100 / (10 + (Math.random() * 100))) * sc;
+        snow.sp = (Math.pow(snow.sz * .8, 2) * .15) * sp;
+        snow.sp = snow.sp < min ? min : snow.sp;
+        arr.push(눈);
+      }
+      go();
+      function go() {
+        window.requestAnimationFrame(go);
+        $.clearRect(0, 0, w, h);
+        /*$.fillStyle = 'hsla(242, 95%, 50%, 0.0)';*/
+        $.fillRect(0, 0, w, h);
+        $.fill();
         for (var i = 0; i < arr.length; ++i) {
           f = arr[i];
           f.t += .05;
@@ -645,26 +668,28 @@ function Snowy() {
           if (f.y > h + 50) f.y = -10 - Math.random() * mv;
           if (f.x > w + mv) f.x = - mv;
           if (f.x < - mv) f.x = w + mv;
-          f.draw();}
- }
+          f.draw();
+        }
+      }
 
- function Flake() {
-   this.draw = function() {
-      this.g = $.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.sz);
-      this.g.addColorStop(0, 'hsla(255,255%,255%,1)');
-      this.g.addColorStop(1, 'hsla(255,255%,255%,0)');
-      $.moveTo(this.x, this.y);
-      $.fillStyle = this.g;
-      $.beginPath();
-      $.arc(this.x, this.y, this.sz, 0, Math.PI * 2, true);
-      $.fill();}
-  }
-}
-/*________________________________________*/
-window.addEventListener('resize', function(){
-  c.width = w = window.innerWidth;
-  c.height = h = window.innerHeight;
-}, false);
+      function Flake() {
+        this.draw = function () {
+          this.g = $.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.sz);
+          this.g.addColorStop(0, 'hsla(255,255%,255%,1)');
+          this.g.addColorStop(1, 'hsla(255,255%,255%,0)');
+          $.moveTo(this.x, this.y);
+          $.fillStyle = this.g;
+          $.beginPath();
+          $.arc(this.x, this.y, this.sz, 0, Math.PI * 2, true);
+          $.fill();
+        }
+      }
+    }
+    /*________________________________________*/
+    window.addEventListener('resize', function () {
+      c.width = w = window.innerWidth;
+      c.height = h = window.innerHeight;
+    }, false);
 
   </script>
 
